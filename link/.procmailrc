@@ -1,0 +1,106 @@
+#
+# John Toohey
+#
+PATH=/bin:/usr/bin
+MAILDIR=$HOME/Mail      #you'd better make sure it exists
+DEFAULT=$MAILDIR/mail  #check this
+LOGFILE=$HOME/pm.log    #review this frequently!
+VERBOSE=1
+
+# Directory for storing procmail configuration and log files
+PMDIR=$HOME/Procmail
+
+#FGREP=/bin/fgrep
+#FROM=`formail -x From:`
+#REC=`formail -x Received:`
+TMP=/var/tmp
+EOL="
+"
+
+
+#INCLUDERC=$PMDIR/rc.testing
+#INCLUDERC=$PMDIR/rc.lists
+
+:0
+* ^Subject:.*{Disarmed}
+{
+	:0
+	$MAILDIR/junk
+}
+
+:0
+* ^From:.*berlios.de
+{
+	:0
+	$MAILDIR/polish
+}
+
+:0
+* ^To:.*mule.codehaus.org
+{
+	:0
+	$MAILDIR/mule
+}
+
+:0
+* ^Subject:.$[JIRA]
+{
+	:0
+	$MAILDIR/mule
+}
+
+:0
+* ^From:.*logos\.is
+{
+	:0
+	$MAILDIR/legal
+}
+
+:0
+* ^Cc:.*parspro\.com
+{
+	:0
+	$MAILDIR/parspro
+}
+
+
+:0
+* ^From:.*parspro\.com
+{
+	:0
+	$MAILDIR/parspro
+}
+
+
+:0
+* ^From:.*norsk-tipping\.no
+{
+	:0
+	$MAILDIR/nt
+}
+
+
+:0
+* ^From:.*scientificgames\.*
+{
+	:0
+	$MAILDIR/sgi
+}
+
+:0
+* ^From:.*scigames\.at
+{
+	:0
+	$MAILDIR/sgi
+}
+
+
+# Everything else to default mailbox
+:0:
+${DEFAULT}
+
+
+
+
+
+

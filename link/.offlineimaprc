@@ -1,0 +1,41 @@
+[general]
+metadata = /Users/jpt/.offlineimap
+accounts = GMail
+maxsyncaccounts = 1
+ui = Curses.Blinkenlights
+
+###### GMAIL
+
+[Account GMail]
+localrepository = GMLocal
+remoterepository = GMRemote
+autorefresh = 5
+
+[Repository GMLocal]
+type = Maildir
+localfolders = /Users/jpt/Mail/GM
+sep = /
+
+[Repository GMRemote]
+type = Gmail
+remotehost = imap.gmail.com
+ssl = yes
+remoteuser = johnptoohey@gmail.com
+remotepass = Nbawbmab1201
+maxconnections = 5
+keepalive = 60
+nametrans = lambda folder: re.sub('.*Drafts$', 'drafts', 
+    re.sub('.*Sent Mail$', 'sent', 
+    re.sub('.*Starred$', 'flagged', 
+                re.sub('.*Trash$', 'trash',
+                re.sub('.*Clojure$', 'Clojure',
+                re.sub('.*Pharo$', 'Pharo',
+                re.sub('.*Seaside$', 'Seaside',
+                re.sub('.*Erlang$', 'Erlang',
+                re.sub('.*Mongrel2$', 'M2',
+                re.sub('.*zeromq', 'ZeroMQ',
+                re.sub('.*Personal$', 'Personal',
+                re.sub('.*ParsPro$', 'ParsPro',
+                re.sub('.*Travel$', 'Travel',
+                re.sub('.*All Mail$', 'archive', folder))))))))))))))
+#folderfilter = lambda foldername: not re.search('^\[Gmail\]|All', foldername)

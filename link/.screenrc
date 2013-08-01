@@ -1,0 +1,84 @@
+# -*- shell-script -*-
+#==================================================================
+# .screenrc - John Toohey
+#
+
+# The command prefix, rebind to C-z to make Emacs keybindings easier
+escape ^zz
+
+# Customize options
+sorendition         kG # black  on bold green
+activity            "activity in %n (%t) [%w:%s]~ ^G"
+bell                "bell     in %n (%t) [%w:%s]~ ^G"
+pow_detach_msg      "Bless"
+vbell off
+defmonitor          off
+nethack             on
+startup_message     off
+defscrollback       32768
+autodetach on
+
+termcapinfo xterm* ti@:te@
+
+##
+#terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
+termcapinfo xterm-color256 "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
+# erase background with current bg color
+defbce "on"
+##
+#term screen-256color
+##
+# The status line
+hardstatus on
+hardstatus alwayslastline
+
+# Green text, time, and date; windows in blue:
+#hardstatus alwayslastline "%{=b}%{G} Screen(s): %{y}%w %=%{kG}%C%A %H %D, %M/%d/%Y "
+#hardstatus alwayslastline "%{=b}%{G} Screen(s) %-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
+#hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W} %c %{g}]'
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
+# Custom bindings.
+# Window numbering starts at 1, not 0.
+bind c screen 1
+bind 0 select 10
+bind j focus down
+bind k focus up
+
+# emacs keybindings for navigation in copy mode
+markkeys ^B=Y:^F=V:h=^B:l=^F:0=^A:$=^E
+
+# C-g and other keys quit copy mode. Esc does nothing.
+# Only C-g, Esc, and C-space break out of i-search. So, use Esc because
+# it doesn't break out of copy mode and keeps the cursor position.
+markkeys \033=\015=^G=^D=h=j=k=l=H=M=L=G=g=y=c=v=a=x=b=e=B=E=w
+markkeys @=\033
+
+# special hack for C-e, since it should go *past* the last char.
+# (-m means this is for copy mode only.)
+bindkey -m ^e stuff "\$^f"
+
+# page up and page down
+bindkey -m -k kP stuff Y
+bindkey -m -k kN stuff V
+
+# C-space sets mark.
+markkeys ' '=^@
+
+# Default screens on startup
+#screen 1
+#select 1
+#exec $HOME/screen-ssh-agent
+#exec true
+#source $HOME/.ssh/screen_agent
+
+screen -t 'Juliet' 1 ssh jt@juliet.parspro.com
+screen -t 'Mail' 2 mutt
+screen -t 'IRC' 3 /opt/local/bin/irssi
+screen -t 'Work' 4 dtvm
+select 1
+
+fit
