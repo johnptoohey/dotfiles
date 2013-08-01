@@ -799,6 +799,7 @@ alias hh='history'
 
 alias ts=typeset
 compdef _typeset ts
+alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/Truecrypt --text'
 
 # }}}
 # {{{ Terminal
