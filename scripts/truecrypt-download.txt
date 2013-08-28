@@ -1,0 +1,5 @@
+TrueCrypt's license forbids us from distributing it, but you can download it from here:
+
+OS X:      http://www.truecrypt.org/download/TrueCrypt%207.1a%20Mac%20OS%20X.dmg
+Linux x86: http://www.truecrypt.org/download/truecrypt-7.1a-linux-console-x86.tar.gz
+Linux x64: http://www.truecrypt.org/download/truecrypt-7.1a-linux-console-x64.tar.gz
