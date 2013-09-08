@@ -1,0 +1,8 @@
+  set daemon 60              # Check services every minute.
+
+  set httpd port 2812 and    # Start web interface on port 2812 and only allow
+    use address localhost    # connections from localhost.
+    allow localhost
+
+  set mailserver localhost   # Use a local mailserver to send alert emails.
+  set alert ops@example.com  # Send alert emails to this address.

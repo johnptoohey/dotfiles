@@ -1,0 +1,7 @@
+check process example-webserver with pidfile /var/run/example-webserver.pid
+  start = "/usr/local/etc/example-webserver start"
+  stop = "/usr/local/etc/example-webserver stop"
+
+  if failed host localhost port 8888 protocol http
+     and request "/index.html"
+  then restart

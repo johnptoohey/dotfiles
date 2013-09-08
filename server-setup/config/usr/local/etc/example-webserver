@@ -1,0 +1,12 @@
+#!/bin/bash
+
+case $1 in
+  start)
+    echo $$ > /var/run/example-webserver.pid;
+    exec 2>&1 java -jar /usr/local/etc/example-webserver.jar 1>/var/log/example-webserver.log
+    ;;
+  stop)
+    kill `cat /var/run/example-webserver.pid` ;;
+  *)
+    echo "usage: example-webserver {start|stop}" ;;
+esac
