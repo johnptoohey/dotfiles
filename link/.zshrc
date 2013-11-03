@@ -800,11 +800,13 @@ alias hh='history'
 alias ts=typeset
 compdef _typeset ts
 alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/Truecrypt --text'
-
+alias ping='ping -c 5'      # Pings with 5 packets, not unlimited
+alias GH='curl -s https://status.github.com/api/status.json | jq '.status''
 # }}}
 # {{{ Terminal
 export TERM=xterm-color
 alias cls='clear'
+alias clr='clear;echo "Currently logged in on $(tty), as $(whoami) in directory $(pwd)."'
 alias term='echo $TERM'
 # {{{ Changing terminal window/icon titles
 
